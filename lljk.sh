@@ -75,4 +75,4 @@ pacstrap /mnt base base-devel linux linux-firmware nano dhcpcd netctl grub wget
 echo '3.3 Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt sh -c "$(curl -fsSL https://git.io/JeFSV)"
+arch-chroot /mnt sh -c "$(curl -fsSL github.com/lljkee/arch/blob/master/lljk2.sh)"
