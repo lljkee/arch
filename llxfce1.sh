@@ -38,7 +38,7 @@ echo '2.4 создание разделов'
   echo;
   echo;
   echo;
-  echo +4G;
+  echo +5G;
 
   echo n;
   echo p;
@@ -68,6 +68,9 @@ mount /dev/sda4 /mnt/home
 
 echo '3.1 Выбор зеркал для загрузки. Ставим зеркало от Яндекс'
 echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+
+echo '3.1.1 Обновляем ключи'
+pacman-key --init && pacman-key --populate archlinux && pacman-key --refresh-keys
 
 echo '3.2 Установка основных пакетов'
 pacstrap /mnt base base-devel linux linux-firmware nano dhcpcd netctl grub wget
