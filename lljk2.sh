@@ -4,7 +4,7 @@ read -p "Введите имя пользователя: " username
 
 echo 'Прописываем имя компьютера'
 echo $hostname > /etc/hostname
-ln -svf /usr/share/zoneinfo/Asia/Yekaterinburg /etc/localtime
+ln -svf /usr/share/zoneinfo/Asia/Moscow /etc/localtime
 
 echo '3.4 Добавляем русскую локаль системы'
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -44,7 +44,7 @@ echo 'Устанавливаем пароль пользователя'
 passwd $username
 
 echo 'Устанавливаем SUDO'
-echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+echo 'lljk ALL=(ALL) ALL' >> /etc/sudoers
 
 echo 'Раскомментируем репозиторий multilib Для работы 32-битных приложений в 64-битной системе.'
 echo '[multilib]' >> /etc/pacman.conf
@@ -61,31 +61,52 @@ fi
 
 echo 'Ставим иксы и драйвера'
 pacman -S $gui_install
+pacman -S xfce4 xfce4-goodies --noconfirm
+#echo "Какое DE ставим?"
+#read -p "1 - XFCE, 2 - KDE, 3 - Openbox: " vm_setting
+#if [[ $vm_setting == 1 ]]; then
+ # pacman -S xfce4 xfce4-goodies --noconfirm
+#elif [[ $vm_setting == 2 ]]; then
+ # pacman -Sy plasma-meta kdebase --noconfirm
+#elif [[ $vm_setting == 3 ]]; then  
+#  pacman -S  openbox xfce4-terminal
+#fi
 
-echo "Какое DE ставим?"
-read -p "1 - XFCE, 2 - KDE, 3 - Openbox: " vm_setting
-if [[ $vm_setting == 1 ]]; then
-  pacman -S xfce4 xfce4-goodies --noconfirm
-elif [[ $vm_setting == 2 ]]; then
-  pacman -Sy plasma-meta kdebase --noconfirm
-elif [[ $vm_setting == 3 ]]; then  
-  pacman -S  openbox xfce4-terminal
-fi
-
-echo 'Cтавим DM'
-pacman -S slim --noconfirm
-systemctl enable slim
+#echo 'Cтавим DM'
+#pacman -S slim --noconfirm
+#systemctl enable slim
 
 echo 'Ставим шрифты'
-pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arphic-ukai ttf-arphic-uming ttf-hanazono --noconfirm 
+pacman -S modemmanager ppp ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arphic-ukai ttf-arphic-uming ttf-hanazono --noconfirm 
 
-echo 'Ставим сеть'
-pacman -S networkmanager network-manager-applet modemmanager ppp --noconfirm
+#echo 'Ставим сеть'
+#pacman -S networkmanager network-manager-applet modemmanager ppp --noconfirm
 
-echo 'Подключаем автозагрузку менеджера входа и интернет'
-systemctl enable NetworkManager
+#echo 'Подключаем автозагрузку менеджера входа и интернет'
+#systemctl enable NetworkManager
 
+echo 'Установка AUR (yay)'
+sudo pacman -Syu
+sudo pacman -S wget --noconfirm
+wget git.io/yay-install.sh && sh yay-install.sh --noconfirm
+
+echo 'Создаем нужные директории'
+sudo pacman -S xdg-user-dirs --noconfirm
+xdg-user-dirs-update
+
+echo 'Установка программ'
+sudo pacman -S f2fs-tools chromium vlc screenfetch galculator qbittorrent dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs pulseaudio pulseaudio-alsa pavucontrol --noconfirm
+
+echo 'Установка автозапуска'
+rm -i /home/lljk/.xinitrc
+wget https://github.com/lljkee/arch/blob/master/attach/.xinitrc
+rm-i /home/lljk/.bash_profile
+wget https://github.com/lljkee/arch/blob/master/attach/.bash_profile
+wget https://github.com/lljkee/arch/blob/master/attach/override.conf
+sudo mkdir /etc/systemd/system/getty@tty1.service.d
+sudo cp home/lljk/override.conf /etc/systemd/system/getty@tty1.service.d/
+rm /home/lljk/override.conf
 echo 'Установка завершена! Перезагрузите систему.'
-echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
-echo 'wget https://raw.githubusercontent.com/lljkee/arch/master/lljk3.sh && sh lljk3.sh'
+#echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
+#echo 'wget https://raw.githubusercontent.com/lljkee/arch/master/lljk3.sh && sh lljk3.sh'
 exit
