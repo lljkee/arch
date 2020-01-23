@@ -101,9 +101,11 @@ echo 'Установка автозапуска'
 rm -i /home/lljk/.xinitrc
 wget https://raw.githubusercontent.com/lljkee/arch/master/attach/.xinitrc
 sudo mv /.xinitrc /home/lljk/
+sudo chmod 777 /home/lljk/.xinitrc
 rm -i /home/lljk/.bash_profile
 wget https://raw.githubusercontent.com/lljkee/arch/master/attach/.bash_profile
 sudo mv /.bash_profile /home/lljk/
+sudo chmod 777 /home/lljk/.bash_profile
 wget https://raw.githubusercontent.com/lljkee/arch/master/attach/override.conf
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
 sudo mv /override.conf /etc/systemd/system/getty@tty1.service.d/
