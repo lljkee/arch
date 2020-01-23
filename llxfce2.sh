@@ -4,7 +4,7 @@ read -p "Введите имя пользователя: " username
 
 echo 'Прописываем имя компьютера'
 echo $hostname > /etc/hostname
-ln -svf /usr/share/zoneinfo/Asia/Moscow /etc/localtime
+ln -svf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo '3.4 Добавляем русскую локаль системы'
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -100,13 +100,15 @@ sudo pacman -S f2fs-tools chromium vlc screenfetch galculator qbittorrent dosfst
 echo 'Установка автозапуска'
 rm -i /home/lljk/.xinitrc
 wget https://github.com/lljkee/arch/blob/master/attach/.xinitrc
-rm-i /home/lljk/.bash_profile
+sudo mv /.xinitrc /home/lljk/
+rm -i /home/lljk/.bash_profile
 wget https://github.com/lljkee/arch/blob/master/attach/.bash_profile
+sudo mv /.bash_profile /home/lljk/
 wget https://github.com/lljkee/arch/blob/master/attach/override.conf
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
-sudo cp home/lljk/override.conf /etc/systemd/system/getty@tty1.service.d/
-rm /home/lljk/override.conf
+sudo mv /override.conf /etc/systemd/system/getty@tty1.service.d/
 echo 'Установка завершена! Перезагрузите систему.'
 #echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
 #echo 'wget https://raw.githubusercontent.com/lljkee/arch/master/lljk3.sh && sh lljk3.sh'
+
 exit
