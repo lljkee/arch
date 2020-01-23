@@ -95,7 +95,7 @@ sudo pacman -S xdg-user-dirs --noconfirm
 xdg-user-dirs-update
 
 echo 'Установка программ'
-sudo pacman -S f2fs-tools chromium vlc screenfetch galculator bash-completion qbittorrent dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs pulseaudio pulseaudio-alsa pavucontrol --noconfirm
+sudo pacman -S f2fs-tools conky hddtemp gawk net-tools chromium vlc screenfetch galculator bash-completion qbittorrent dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs pulseaudio pulseaudio-alsa pavucontrol --noconfirm
 
 echo 'Установка автозапуска'
 rm -i /home/lljk/.xinitrc
