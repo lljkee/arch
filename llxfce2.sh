@@ -99,14 +99,15 @@ sudo pacman -S f2fs-tools chromium vlc screenfetch galculator bash-completion qb
 
 echo 'Установка автозапуска'
 rm -i /home/lljk/.xinitrc
-wget https://github.com/lljkee/arch/blob/master/attach/.xinitrc
+wget https://raw.githubusercontent.com/lljkee/arch/master/attach/.xinitrc
 sudo mv /.xinitrc /home/lljk/
 rm -i /home/lljk/.bash_profile
-wget https://github.com/lljkee/arch/blob/master/attach/.bash_profile
+wget https://raw.githubusercontent.com/lljkee/arch/master/attach/.bash_profile
 sudo mv /.bash_profile /home/lljk/
-wget https://github.com/lljkee/arch/blob/master/attach/override.conf
+wget https://raw.githubusercontent.com/lljkee/arch/master/attach/override.conf
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
 sudo mv /override.conf /etc/systemd/system/getty@tty1.service.d/
+
 echo 'Установка завершена! Перезагрузите систему.'
 #echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
 #echo 'wget https://raw.githubusercontent.com/lljkee/arch/master/lljk3.sh && sh lljk3.sh'
