@@ -9,6 +9,7 @@
 # Михаил Сарвилин https://vk.com/michael170707
 # Данил Антошкин https://vk.com/danil.antoshkin
 # Юрий Порунцов https://vk.com/poruncov
+# git.io/dimxfce.sh
 
 loadkeys ru
 setfont cyr-sun16
