@@ -77,7 +77,7 @@ pacman -S xfce4 xfce4-goodies --noconfirm
 #systemctl enable slim
 
 echo 'Ставим шрифты'
-pacman -S modemmanager ppp ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arphic-ukai ttf-arphic-uming ttf-hanazono --noconfirm 
+pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arphic-ukai ttf-arphic-uming ttf-hanazono --noconfirm 
 
 #echo 'Ставим сеть'
 #pacman -S networkmanager network-manager-applet modemmanager ppp --noconfirm
@@ -86,29 +86,24 @@ pacman -S modemmanager ppp ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitst
 #systemctl enable NetworkManager
 
 echo 'Установка AUR (yay)'
-sudo pacman -Syu
-sudo pacman -S wget --noconfirm
-wget git.io/yay-install.sh && sh yay-install.sh --noconfirm
+wget -P /home/lljk/ git.io/yay-install.sh && sh yay-install.sh --noconfirm
 
 echo 'Создаем нужные директории'
 sudo pacman -S xdg-user-dirs --noconfirm
 xdg-user-dirs-update
 
 echo 'Установка программ'
-sudo pacman -S f2fs-tools conky hddtemp gawk net-tools chromium vlc screenfetch galculator bash-completion qbittorrent dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs pulseaudio pulseaudio-alsa pavucontrol --noconfirm
+sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp gawk net-tools chromium vlc screenfetch galculator bash-completion qbittorrent dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs pulseaudio pulseaudio-alsa pavucontrol --noconfirm
 
 echo 'Установка автозапуска'
-rm -i /home/lljk/.xinitrc
-wget https://raw.githubusercontent.com/lljkee/arch/master/attach/.xinitrc
-sudo mv /.xinitrc /home/lljk/
-sudo chmod 777 /home/lljk/.xinitrc
-rm -i /home/lljk/.bash_profile
-wget https://raw.githubusercontent.com/lljkee/arch/master/attach/.bash_profile
-sudo mv /.bash_profile /home/lljk/
-sudo chmod 777 /home/lljk/.bash_profile
-wget https://raw.githubusercontent.com/lljkee/arch/master/attach/override.conf
+rm /home/lljk/.xinitrc
+wget -P /home/lljk/ https://git.io/.xinitrc
+
+rm /home/lljk/.bash_profile
+wget -P /home/lljk/ https://git.io/.bash_profile
+
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
-sudo mv /override.conf /etc/systemd/system/getty@tty1.service.d/
+sudo wget -P /etc/systemd/system/getty@tty1.service.d/ https://git.io/override.conf
 
 echo 'Установка завершена! Перезагрузите систему.'
 #echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
