@@ -92,8 +92,30 @@ echo 'Создаем нужные директории'
 sudo pacman -S xdg-user-dirs --noconfirm
 xdg-user-dirs-update
 
+echo 'Установить звук?'
+read -p "1 - Да, 0 - Нет: " soundprog_set
+if [[ $soundprog_set == 1 ]]; then
+  sudo pacman -S alsa-lib alsa-utils pulseaudio pulseaudio-alsa pavucontrol --noconfirm
+elif [[ $soundprog_set == 0 ]]; then
+  echo 'Установка программ пропущена.'
+fi
+
 echo 'Установка программ'
-sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp gawk net-tools chromium vlc screenfetch galculator bash-completion qbittorrent dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs pulseaudio pulseaudio-alsa pavucontrol --noconfirm
+read -p "1 - Да, 0 - Нет: " prog_set
+if [[ $prog_set == 1 ]]; then
+ sudo pacman -S chromium vlc screenfetch bash-completion qbittorrent ntfs-3g p7zip unrar gvfs --noconfirm
+elif [[ $prog_set == 0 ]]; then
+  echo 'Установка программ пропущена.'
+fi
+
+
+echo 'Установка доп программ'
+read -p "1 - Да, 0 - Нет: " dopprog_set
+if [[ $dopprog_set == 1 ]]; then
+sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp gawk net-tools galculator dosfstools --noconfirm
+elif [[ $dopprog_set == 0 ]]; then
+  echo 'Установка доп программ пропущена.'
+fi
 
 echo 'Установка автозапуска'
 rm /home/lljk/.xinitrc
