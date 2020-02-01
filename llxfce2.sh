@@ -72,9 +72,13 @@ pacman -S xfce4 xfce4-goodies --noconfirm
 #  pacman -S  openbox xfce4-terminal
 #fi
 
-#echo 'Cтавим DM'
+#echo 'Cтавим Slim'
 #pacman -S slim --noconfirm
 #systemctl enable slim
+
+#echo 'Cтавим lxdm'
+#pacman -S lxdm --noconfirm
+#systemctl enable lxdm
 
 echo 'Ставим шрифты'
 pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arphic-ukai ttf-arphic-uming ttf-hanazono --noconfirm 
@@ -85,12 +89,9 @@ pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arp
 #echo 'Подключаем автозагрузку менеджера входа и интернет'
 #systemctl enable NetworkManager
 
-echo 'Установка AUR (yay)'
-wget -P /home/lljk/ git.io/yay-install.sh && sh yay-install.sh --noconfirm
-
 echo 'Создаем нужные директории'
-sudo pacman -S xdg-user-dirs --noconfirm
-xdg-user-dirs-update
+  sudo pacman -S xdg-user-dirs --noconfirm
+  xdg-user-dirs-update
 
 echo 'Установить звук?'
 read -p "1 - Да, 0 - Нет: " soundprog_set
@@ -117,6 +118,34 @@ elif [[ $dopprog_set == 0 ]]; then
   echo 'Установка доп программ пропущена.'
 fi
 
+echo 'Создаем папку downloads'
+  mkdir /home/lljk/downloads
+  cd /home/lljk/downloads
+
+echo 'Создаем нужные директории'
+  sudo pacman -S xdg-user-dirs --noconfirm
+  xdg-user-dirs-update
+
+echo 'Ставим обои темы и иконки'
+   
+  wget -P /home/lljk/downloads/ https://git.io/dimwalp.jpg
+  sudo rm -rf /usr/share/backgrounds/xfce/* #Удаляем стандартрые обои
+  sudo mv -f /home/lljk/downloads/dimwalp.jpg /usr/share/backgrounds/xfce/dimwalp.jpg
+  
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
+  sudo rm -rf /home/lljk/.config/xfce4/panel/
+  sudo rm -rf /home/lljk/.config/xfce4/*
+  sudo tar -xzf /home/lljk/downloads/dimxfce4.tar.gz -C /home/lljk/  
+  
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/iconsxfce4.tar.gz
+  sudo tar -xzf /home/lljk/downloads/iconsxfce4.tar.gz -C /home/lljk/
+  
+  wget -P /home/lljk/downloads https://github.com/lljkee/arch/raw/master/attach/themesxfce4.tar.gz
+  sudo tar -xzf /home/lljk/downloads/themesxfce4.tar.gz -C /home/lljk/
+  
+echo 'Установка AUR (yay)'
+   wget -P /home/lljk/downloads/ git.io/yay-install.sh && sh yay-install.sh --noconfirm
+
 echo 'Установка автозапуска'
 rm /home/lljk/.xinitrc
 wget -P /home/lljk/ https://git.io/.xinitrc
@@ -128,7 +157,5 @@ sudo mkdir /etc/systemd/system/getty@tty1.service.d
 sudo wget -P /etc/systemd/system/getty@tty1.service.d/ https://git.io/override.conf
 
 echo 'Установка завершена! Перезагрузите систему.'
-#echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
-#echo 'wget https://raw.githubusercontent.com/lljkee/arch/master/lljk3.sh && sh lljk3.sh'
 
 exit
