@@ -1,0 +1,8 @@
+[Unit]
+Description=Запуск conky.
+ 
+[Service]
+ExecStart=/home/lljk/.config/conky/conky.sh
+ 
+[Install]
+WantedBy=multi-user.target
