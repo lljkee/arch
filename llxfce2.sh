@@ -126,8 +126,8 @@ echo 'Ставим обои темы и иконки'
   wget -P /home/lljk/downloads/ https://git.io/dimwalp.jpg
   wget -P /home/lljk/downloads/ https://git.io/dimwalp1.jpg
   sudo rm -rf /usr/share/backgrounds/xfce/* #Удаляем стандартрые обои
-  sudo mv -f /home/lljk/downloads/dimwalp.jpg /usr/share/backgrounds/xfce/dimwalp.jpg
-  sudo mv -f /home/lljk/downloads/dimwalp1.jpg /usr/share/backgrounds/xfce/dimwalp1.jpg
+  sudo mv -f /home/lljk/downloads/dimwalp.jpg /usr/share/backgrounds/dimwalp.jpg
+  sudo mv -f /home/lljk/downloads/dimwalp1.jpg /usr/share/backgrounds/dimwalp1.jpg
   
   echo 'Ставим настройки'
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
@@ -169,7 +169,8 @@ if [[ $btprog_set == 1 ]]; then
   sudo systemctl enable bluetooth.service --noconfirm
   yay -S bluez-hciconfig bluez-hcitool
   wget -P /home/lljk/downloads/ https://git.io/brcm.tar.gz
-  sudo tar -xzf /home/lljk/downloads/brcm.tar.gz -C /lib/firmware/brcm/
+  sudo tar -xzf /home/lljk/downloads/brcm.tar.gz
+  sudo mv /home/lljk/downloads/brcm/* /lib/firmware/brcm/
 elif [[ $btprog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
@@ -183,6 +184,8 @@ wget -P /home/lljk/ https://git.io/.bash_profile
 
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
 sudo wget -P /etc/systemd/system/getty@tty1.service.d/ https://git.io/override.conf
+
+sudo rm -rf /home/lljk/downloads/*
 
 echo 'Установка завершена! Перезагрузите систему.'
 exit
