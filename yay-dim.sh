@@ -9,3 +9,5 @@ cd yay-bin
 makepkg -si --skipinteg
 cd ..
 rm -rf yay-bin
+
+#wget git.io/yay-dim.sh
