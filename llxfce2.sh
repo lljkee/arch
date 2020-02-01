@@ -164,7 +164,7 @@ echo 'Установка AUR (yay)'
 echo 'Установить Bluetooth?'
 read -p "1 - Да, 0 - Нет: " btprog_set
 if [[ $btprog_set == 1 ]]; then
-  sudo pacman -S bluez blueman bluez-utils pulseaudio-bluetooth --noconfirm
+  sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
   sudo systemctl enable bluetooth.service --noconfirm
   yay -S bluez-hciconfig bluez-hcitool
 elif [[ $btprog_set == 0 ]]; then
