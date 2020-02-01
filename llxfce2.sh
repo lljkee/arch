@@ -167,6 +167,8 @@ if [[ $btprog_set == 1 ]]; then
   sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
   sudo systemctl enable bluetooth.service --noconfirm
   yay -S bluez-hciconfig bluez-hcitool
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/brcm.tar.gz
+  sudo tar -xzf /home/lljk/downloads/brcm.tar.gz -C /lib/firmware/brcm/
 elif [[ $btprog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
