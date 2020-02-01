@@ -35,7 +35,7 @@ echo 'Ставим программу для Wi-fi'
 pacman -S dialog wpa_supplicant --noconfirm 
 
 echo 'Добавляем пользователя'
-useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,uusp,wheel -s /bin/bash $username
+useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash $username
 
 echo 'Создаем root пароль'
 passwd
