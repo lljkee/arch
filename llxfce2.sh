@@ -89,10 +89,6 @@ pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arp
 #echo 'Подключаем автозагрузку менеджера входа и интернет'
 #systemctl enable NetworkManager
 
-echo 'Создаем нужные директории'
-  sudo pacman -S xdg-user-dirs --noconfirm
-  xdg-user-dirs-update
-
 echo 'Установить звук?'
 read -p "1 - Да, 0 - Нет: " soundprog_set
 if [[ $soundprog_set == 1 ]]; then
@@ -146,7 +142,7 @@ echo 'Ставим обои темы и иконки'
   sudo tar -xzf /home/lljk/downloads/themesxfce4.tar.gz -C /home/lljk/
   
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/conky.tar.gz
-  sudo tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config
+  sudo tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config/
   gtk-update-icon-cache /home/lljk/.icons/nouveGnomeGray/
   gtk-update-icon-cache /home/lljk/.icons/vamox-argentum/
   
@@ -160,9 +156,11 @@ wget -P /home/lljk/ https://git.io/.xinitrc
 rm /home/lljk/.bash_profile
 wget -P /home/lljk/ https://git.io/.bash_profile
 
+rm /home/lljk/.bashrc
+wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
+
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
 sudo wget -P /etc/systemd/system/getty@tty1.service.d/ https://git.io/override.conf
 
 echo 'Установка завершена! Перезагрузите систему.'
-
 exit
