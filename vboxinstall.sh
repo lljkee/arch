@@ -1,4 +1,5 @@
 #!/bin/bash
+#https://git.io/vbxtest.sh
 read -p "Введите имя пользователя: " username
 echo 'Добавляем пользователя'
 useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash $username
