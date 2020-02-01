@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# git.io/dimxfce.sh
+
+
 # Arch Linux Fast Install - Быстрая установка Arch Linux https://github.com/ordanax/arch2018
 # Цель скрипта - быстрое развертывание системы с вашими персональными настройками (конфиг XFCE, темы, программы и т.д.).
 
@@ -9,7 +12,6 @@
 # Михаил Сарвилин https://vk.com/michael170707
 # Данил Антошкин https://vk.com/danil.antoshkin
 # Юрий Порунцов https://vk.com/poruncov
-# git.io/dimxfce.sh
 
 loadkeys ru
 setfont cyr-sun16
