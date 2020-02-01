@@ -90,11 +90,12 @@ pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arp
 #systemctl enable NetworkManager
 
 echo 'Установить Bluetooth?'
-read -p "1 - Да, 0 - Нет: " soundprog_set
-if [[ $soundprog_set == 1 ]]; then
+read -p "1 - Да, 0 - Нет: " btprog_set
+if [[ $btprog_set == 1 ]]; then
   sudo pacman -S bluez blueman bluez-utils --noconfirm
-  sudo systemctl enable bluetooth.service
-elif [[ $soundprog_set == 0 ]]; then
+  sudo systemctl enable bluetooth.service --noconfirm
+  yay -S bluez-hciconfig bluez-hcitool
+elif [[ $btprog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
 
