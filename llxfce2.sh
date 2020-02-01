@@ -89,17 +89,6 @@ pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arp
 #echo 'Подключаем автозагрузку менеджера входа и интернет'
 #systemctl enable NetworkManager
 
-echo 'Установить Bluetooth?'
-read -p "1 - Да, 0 - Нет: " btprog_set
-if [[ $btprog_set == 1 ]]; then
-  sudo pacman -S bluez blueman bluez-utils --noconfirm
-  sudo systemctl enable bluetooth.service --noconfirm
-  yay -S bluez-hciconfig bluez-hcitool
-elif [[ $btprog_set == 0 ]]; then
-  echo 'Установка программ пропущена.'
-fi
-
-
 echo 'Установить звук?'
 read -p "1 - Да, 0 - Нет: " soundprog_set
 if [[ $soundprog_set == 1 ]]; then
@@ -115,7 +104,6 @@ if [[ $prog_set == 1 ]]; then
 elif [[ $prog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
-
 
 echo 'Установка доп программ'
 read -p "1 - Да, 0 - Нет: " dopprog_set
@@ -172,6 +160,16 @@ echo 'Ставим обои темы и иконки'
   
 echo 'Установка AUR (yay)'
    wget -P /home/lljk/downloads/ git.io/yay-install.sh && sh yay-install.sh --noconfirm
+
+echo 'Установить Bluetooth?'
+read -p "1 - Да, 0 - Нет: " btprog_set
+if [[ $btprog_set == 1 ]]; then
+  sudo pacman -S bluez blueman bluez-utils --noconfirm
+  sudo systemctl enable bluetooth.service --noconfirm
+  yay -S bluez-hciconfig bluez-hcitool
+elif [[ $btprog_set == 0 ]]; then
+  echo 'Установка программ пропущена.'
+fi
 
 echo 'Установка автозапуска'
 rm /home/lljk/.xinitrc
