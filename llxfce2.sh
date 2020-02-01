@@ -92,7 +92,7 @@ pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arp
 echo 'Установить звук?'
 read -p "1 - Да, 0 - Нет: " soundprog_set
 if [[ $soundprog_set == 1 ]]; then
-  sudo pacman -S alsa-lib alsa-utils pulseaudio pulseaudio-alsa pavucontrol --noconfirm
+  sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol --noconfirm
 elif [[ $soundprog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
@@ -108,7 +108,7 @@ fi
 echo 'Установка доп программ'
 read -p "1 - Да, 0 - Нет: " dopprog_set
 if [[ $dopprog_set == 1 ]]; then
-sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp gawk net-tools galculator dosfstools --noconfirm
+sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp net-tools galculator --noconfirm
 elif [[ $dopprog_set == 0 ]]; then
   echo 'Установка доп программ пропущена.'
 fi
@@ -159,7 +159,8 @@ echo 'Ставим обои темы и иконки'
   wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
   
 echo 'Установка AUR (yay)'
-   wget -P /home/lljk/downloads/ git.io/yay-install.sh && sh yay-install.sh --noconfirm
+   wget -P /home/lljk/downloads/ git.io/yay-install.sh 
+   sh /home/lljk/downloads/yay-install.sh --noconfirm
 
 echo 'Установить Bluetooth?'
 read -p "1 - Да, 0 - Нет: " btprog_set
