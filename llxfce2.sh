@@ -108,7 +108,7 @@ fi
 echo 'Установка доп программ'
 read -p "1 - Да, 0 - Нет: " dopprog_set
 if [[ $dopprog_set == 1 ]]; then
-sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp net-tools galculator --noconfirm
+ sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp net-tools simplescreenrecorder guvcview tox  galculator --noconfirm
 elif [[ $dopprog_set == 0 ]]; then
   echo 'Установка доп программ пропущена.'
 fi
@@ -171,7 +171,6 @@ read -p "1 - Да, 0 - Нет: " btprog_set
 if [[ $btprog_set == 1 ]]; then
   sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
   sudo systemctl enable bluetooth.service --noconfirm
-  yay -S bluez-hciconfig bluez-hcitool
   wget -P /home/lljk/downloads/ https://git.io/brcm.tar.gz
   sudo tar -xzf /home/lljk/downloads/brcm.tar.gz
   sudo mv /home/lljk/downloads/brcm/* /lib/firmware/brcm/
