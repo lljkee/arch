@@ -187,4 +187,11 @@ sudo wget -P /etc/systemd/system/getty@tty1.service.d/ https://git.io/override.c
 sudo rm -rf /home/lljk/downloads/*
 
 echo 'Установка завершена! Перезагрузите систему.'
+
 exit
+
+wget git.io/aurdim.sh && sh aurdim.sh
+
+exit
+
+reboot
