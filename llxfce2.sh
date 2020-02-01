@@ -104,7 +104,7 @@ fi
 echo 'Установка программ'
 read -p "1 - Да, 0 - Нет: " prog_set
 if [[ $prog_set == 1 ]]; then
- sudo pacman -S chromium vlc screenfetch bash-completion qbittorrent ntfs-3g p7zip unrar gvfs --noconfirm
+ sudo pacman -S chromium vlc screenfetch bash-completion qbittorrent ntfs-3g flashplugin p7zip unrar gvfs --noconfirm
 elif [[ $prog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
@@ -129,8 +129,10 @@ echo 'Создаем нужные директории'
 echo 'Ставим обои темы и иконки'
    
   wget -P /home/lljk/downloads/ https://git.io/dimwalp.jpg
+  wget -P /home/lljk/downloads/ https://git.io/dimwalp1.jpg
   sudo rm -rf /usr/share/backgrounds/xfce/* #Удаляем стандартрые обои
   sudo mv -f /home/lljk/downloads/dimwalp.jpg /usr/share/backgrounds/xfce/dimwalp.jpg
+  sudo mv -f /home/lljk/downloads/dimwalp1.jpg /usr/share/backgrounds/xfce/dimwalp1.jpg
   
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
   sudo rm -rf /home/lljk/.config/xfce4/panel/
@@ -140,8 +142,13 @@ echo 'Ставим обои темы и иконки'
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/iconsxfce4.tar.gz
   sudo tar -xzf /home/lljk/downloads/iconsxfce4.tar.gz -C /home/lljk/
   
-  wget -P /home/lljk/downloads https://github.com/lljkee/arch/raw/master/attach/themesxfce4.tar.gz
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/themesxfce4.tar.gz
   sudo tar -xzf /home/lljk/downloads/themesxfce4.tar.gz -C /home/lljk/
+  
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/conky.tar.gz
+  sudo tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config
+  gtk-update-icon-cache /home/lljk/.icons/nouveGnomeGray/
+  gtk-update-icon-cache /home/lljk/.icons/vamox-argentum/
   
 echo 'Установка AUR (yay)'
    wget -P /home/lljk/downloads/ git.io/yay-install.sh && sh yay-install.sh --noconfirm
