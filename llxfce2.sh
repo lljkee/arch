@@ -161,10 +161,6 @@ echo 'Ставим обои темы и иконки'
   echo 'Настраиваем вид bash'
   rm /home/lljk/.bashrc
   wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
-  
-echo 'Установка AUR (yay)'
-   wget -P /home/lljk/ git.io/yay-install.sh 
-   sh /home/lljk/yay-install.sh --noconfirm
 
 echo 'Установить Bluetooth?'
 read -p "1 - Да, 0 - Нет: " btprog_set
