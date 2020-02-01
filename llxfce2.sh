@@ -35,7 +35,7 @@ echo 'Ставим программу для Wi-fi'
 pacman -S dialog wpa_supplicant --noconfirm 
 
 echo 'Добавляем пользователя'
-useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash $username
+useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,uusp,wheel -s /bin/bash $username
 
 echo 'Создаем root пароль'
 passwd
@@ -88,6 +88,16 @@ pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arp
 
 #echo 'Подключаем автозагрузку менеджера входа и интернет'
 #systemctl enable NetworkManager
+
+echo 'Установить Bluetooth?'
+read -p "1 - Да, 0 - Нет: " soundprog_set
+if [[ $soundprog_set == 1 ]]; then
+  sudo pacman -S bluez blueman bluez-utils --noconfirm
+  sudo systemctl enable bluetooth.service
+elif [[ $soundprog_set == 0 ]]; then
+  echo 'Установка программ пропущена.'
+fi
+
 
 echo 'Установить звук?'
 read -p "1 - Да, 0 - Нет: " soundprog_set
