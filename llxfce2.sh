@@ -154,6 +154,10 @@ echo 'Ставим обои темы и иконки'
   gtk-update-icon-cache /home/lljk/.icons/nouveGnomeGray/
   gtk-update-icon-cache /home/lljk/.icons/vamox-argentum/
   
+  echo 'Ставим лого ArchLinux в меню'
+  wget git.io/arch_logo.png
+  sudo mv -f ~/arch_logo.png /usr/share/pixmaps/arch_logo.png
+  
   echo 'Настраиваем вид bash'
   rm /home/lljk/.bashrc
   wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
