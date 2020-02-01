@@ -133,7 +133,7 @@ echo 'Ставим обои темы и иконки'
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
   sudo rm -rf /home/lljk/.config/xfce4/panel/
   sudo rm -rf /home/lljk/.config/xfce4/*
-  sudo tar -xzf /home/lljk/downloads/dimxfce4.tar.gz -C /home/lljk/.config  
+  sudo tar -xzf /home/lljk/downloads/dimxfce4.tar.gz -C /home/lljk/.config/  
   
   echo 'Ставим иконки'
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/iconsxfce4.tar.gz
