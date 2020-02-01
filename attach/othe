@@ -1,0 +1,7 @@
+git clone https://github.com/путь/до.git
+git init
+git remote -v
+git add .  - добавление
+git pull - обновление local git
+git commit -m 'update'
+git push -u arch master  - выгрузка на гит хаб
