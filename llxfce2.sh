@@ -110,7 +110,7 @@ fi
 echo 'Установка программ'
 read -p "1 - Да, 0 - Нет: " prog_set
 if [[ $prog_set == 1 ]]; then
- sudo pacman -S chromium vlc screenfetch bash-completion qbittorrent ntfs-3g flashplugin p7zip unrar gvfs --noconfirm
+ sudo pacman -S chromium vlc screenfetch usbutils bash-completion qbittorrent ntfs-3g flashplugin p7zip unrar gvfs --noconfirm
 elif [[ $prog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
