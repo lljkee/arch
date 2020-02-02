@@ -27,3 +27,5 @@ echo 'Ставим настройки'
   wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
 
   wget git.io/aurdim.sh && sh aurdim.sh
+  
+  #https://git.io/dimxfce2.sh
