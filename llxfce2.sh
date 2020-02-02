@@ -108,14 +108,18 @@ fi
 echo 'Установка доп программ'
 read -p "1 - Да, 0 - Нет: " dopprog_set
 if [[ $dopprog_set == 1 ]]; then
- sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp net-tools simplescreenrecorder guvcview tox  galculator --noconfirm
+ sudo pacman -S f2fs-tools conky htop modemmanager ppp hddtemp net-tools simplescreenrecorder guvcview tox galculator --noconfirm
 elif [[ $dopprog_set == 0 ]]; then
   echo 'Установка доп программ пропущена.'
 fi
 
+exit
+
 echo 'Создаем папку downloads'
   mkdir /home/lljk/downloads
   cd /home/lljk/downloads
+
+wget git.io/yay-dim.sh && sh yay-dim.sh
 
 echo 'Создаем нужные директории'
   sudo pacman -S xdg-user-dirs --noconfirm
@@ -131,21 +135,21 @@ echo 'Ставим обои темы и иконки'
   
   echo 'Ставим настройки'
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
-  sudo rm -rf /home/lljk/.config/xfce4/panel/
-  sudo rm -rf /home/lljk/.config/xfce4/*
-  sudo tar -xzf /home/lljk/downloads/dimxfce4.tar.gz -C /home/lljk/.config/  
+  rm -rf /home/lljk/.config/xfce4/panel/
+  rm -rf /home/lljk/.config/xfce4/*
+  tar -xzf /home/lljk/downloads/dimxfce4.tar.gz -C /home/lljk/.config/  
   
   echo 'Ставим иконки'
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/iconsxfce4.tar.gz
-  sudo tar -xzf /home/lljk/downloads/iconsxfce4.tar.gz -C /home/lljk/
+  tar -xzf /home/lljk/downloads/iconsxfce4.tar.gz -C /home/lljk/
   
   echo 'Ставим темы'
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/themesxfce4.tar.gz
-  sudo tar -xzf /home/lljk/downloads/themesxfce4.tar.gz -C /home/lljk/
+  tar -xzf /home/lljk/downloads/themesxfce4.tar.gz -C /home/lljk/
   
   echo 'Ставим conky'
   wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/conky.tar.gz
-  sudo tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config/
+  tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config/
   wget -P /home/lljk/downloads/ https://git.io/conky.service
   sudo mv -f /home/lljk/downloads/conky.service /etc/systemd/system/conky.service
   sudo systemctl enable conky.service
@@ -168,7 +172,7 @@ if [[ $btprog_set == 1 ]]; then
   sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
   sudo systemctl enable bluetooth.service --noconfirm
   wget -P /home/lljk/downloads/ https://git.io/brcm.tar.gz
-  sudo tar -xzf /home/lljk/downloads/brcm.tar.gz
+  tar -xzf /home/lljk/downloads/brcm.tar.gz
   sudo mv /home/lljk/downloads/brcm/* /lib/firmware/brcm/
 elif [[ $btprog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
@@ -188,9 +192,7 @@ sudo rm -rf /home/lljk/downloads/*
 
 echo 'Установка завершена! Перезагрузите систему.'
 
-exit
-
-wget git.io/aurdim.sh && sh aurdim.sh
+#wget git.io/aurdim.sh && sh aurdim.sh
 
 exit
 
