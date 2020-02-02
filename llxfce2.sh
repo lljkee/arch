@@ -159,4 +159,4 @@ echo 'Установка завершена! Перезагрузите сист
 
 #wget git.io/aurdim.sh && sh aurdim.sh
 
-exit && reboot
+exit
