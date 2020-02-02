@@ -113,13 +113,9 @@ elif [[ $dopprog_set == 0 ]]; then
   echo 'Установка доп программ пропущена.'
 fi
 
-exit
-
 echo 'Создаем папку downloads'
   mkdir /home/lljk/downloads
   cd /home/lljk/downloads
-
-wget git.io/yay-dim.sh && sh yay-dim.sh
 
 echo 'Создаем нужные директории'
   sudo pacman -S xdg-user-dirs --noconfirm
@@ -130,42 +126,13 @@ echo 'Ставим обои темы и иконки'
   wget -P /home/lljk/downloads/ https://git.io/dimwalp.jpg
   wget -P /home/lljk/downloads/ https://git.io/dimwalp1.jpg
   sudo rm -rf /usr/share/backgrounds/xfce/* #Удаляем стандартрые обои
-  sudo mv -f /home/lljk/downloads/dimwalp.jpg /usr/share/backgrounds/dimwalp.jpg
-  sudo mv -f /home/lljk/downloads/dimwalp1.jpg /usr/share/backgrounds/dimwalp1.jpg
+  sudo mv -f /home/lljk/downloads/dimwalp.jpg /usr/share/backgrounds/xfce/dimwalp.jpg
+  sudo mv -f /home/lljk/downloads/dimwalp1.jpg /usr/share/backgrounds/xfce/dimwalp1.jpg
   
-  echo 'Ставим настройки'
-  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
-  rm -rf /home/lljk/.config/xfce4/panel/
-  rm -rf /home/lljk/.config/xfce4/*
-  tar -xzf /home/lljk/downloads/dimxfce4.tar.gz -C /home/lljk/.config/  
-  
-  echo 'Ставим иконки'
-  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/iconsxfce4.tar.gz
-  tar -xzf /home/lljk/downloads/iconsxfce4.tar.gz -C /home/lljk/
-  
-  echo 'Ставим темы'
-  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/themesxfce4.tar.gz
-  tar -xzf /home/lljk/downloads/themesxfce4.tar.gz -C /home/lljk/
-  
-  echo 'Ставим conky'
-  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/conky.tar.gz
-  tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config/
-  wget -P /home/lljk/downloads/ https://git.io/conky.service
-  sudo mv -f /home/lljk/downloads/conky.service /etc/systemd/system/conky.service
-  sudo systemctl enable conky.service
-  
-  echo 'Добавляем иконки'
-  gtk-update-icon-cache /home/lljk/.icons/nouveGnomeGray/
-  gtk-update-icon-cache /home/lljk/.icons/vamox-argentum/
-  
-  echo 'Ставим лого ArchLinux в меню'
+    echo 'Ставим лого ArchLinux в меню'
   wget git.io/arch_logo.png
   sudo mv -f ~/arch_logo.png /usr/share/pixmaps/arch_logo.png
   
-  echo 'Настраиваем вид bash'
-  rm /home/lljk/.bashrc
-  wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
-
 echo 'Установить Bluetooth?'
 read -p "1 - Да, 0 - Нет: " btprog_set
 if [[ $btprog_set == 1 ]]; then
@@ -188,12 +155,8 @@ wget -P /home/lljk/ https://git.io/.bash_profile
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
 sudo wget -P /etc/systemd/system/getty@tty1.service.d/ https://git.io/override.conf
 
-sudo rm -rf /home/lljk/downloads/*
-
 echo 'Установка завершена! Перезагрузите систему.'
 
 #wget git.io/aurdim.sh && sh aurdim.sh
 
-exit
-
-reboot
+exit && reboot
