@@ -61,7 +61,7 @@ fi
 
 echo 'Ставим иксы и драйвера'
 pacman -S $gui_install
-pacman -S xfce4 xfce4-goodies --noconfirm
+pacman -S xfce4 xfce4-goodies git --noconfirm
 #echo "Какое DE ставим?"
 #read -p "1 - XFCE, 2 - KDE, 3 - Openbox: " vm_setting
 #if [[ $vm_setting == 1 ]]; then
