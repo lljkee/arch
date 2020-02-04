@@ -32,7 +32,7 @@ echo 'Обновляем grub.cfg'
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo 'Ставим программу для Wi-fi'
-pacman -S dialog wpa_supplicant --noconfirm 
+pacman -S dialog wpa_supplicant broadcom-wl --noconfirm 
 
 echo 'Добавляем пользователя'
 useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash $username
