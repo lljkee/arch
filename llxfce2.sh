@@ -32,7 +32,7 @@ echo 'Обновляем grub.cfg'
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo 'Ставим программу для Wi-fi'
-pacman -S dialog wpa_supplicant broadcom-wl --noconfirm 
+pacman -S dialog wpa_supplicant broadcom-wl-dkms --noconfirm 
 
 echo 'Добавляем пользователя'
 useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash $username
@@ -83,11 +83,11 @@ pacman -S xfce4 xfce4-goodies git --noconfirm
 echo 'Ставим шрифты'
 pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arphic-ukai ttf-arphic-uming ttf-hanazono --noconfirm 
 
-#echo 'Ставим сеть'
-#pacman -S networkmanager network-manager-applet modemmanager ppp --noconfirm
+echo 'Ставим сеть'
+pacman -S networkmanager network-manager-applet modemmanager ppp --noconfirm
 
-#echo 'Подключаем автозагрузку менеджера входа и интернет'
-#systemctl enable NetworkManager
+echo 'Подключаем автозагрузку менеджера входа и интернет'
+systemctl enable NetworkManager
 
 echo 'Установить звук?'
 read -p "1 - Да, 0 - Нет: " soundprog_set
@@ -130,20 +130,20 @@ echo 'Ставим обои темы и иконки'
   sudo mv -f /home/lljk/downloads/dimwalp1.jpg /usr/share/backgrounds/xfce/dimwalp1.jpg
   
     echo 'Ставим лого ArchLinux в меню'
-  wget git.io/arch_logo.png
-  sudo mv -f ~/arch_logo.png /usr/share/pixmaps/arch_logo.png
+  wget - P /home/lljk git.io/arch_logo.png
+  sudo mv -f /home/lljk/arch_logo.png /usr/share/pixmaps/arch_logo.png
   
-echo 'Установить Bluetooth?'
-read -p "1 - Да, 0 - Нет: " btprog_set
-if [[ $btprog_set == 1 ]]; then
-  sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
-  sudo systemctl enable bluetooth.service --noconfirm
-  wget -P /home/lljk/downloads/ https://git.io/brcm.tar.gz
-  tar -xzf /home/lljk/downloads/brcm.tar.gz
-  sudo mv /home/lljk/downloads/brcm/* /lib/firmware/brcm/
-elif [[ $btprog_set == 0 ]]; then
-  echo 'Установка программ пропущена.'
-fi
+#echo 'Установить Bluetooth?'
+#read -p "1 - Да, 0 - Нет: " btprog_set
+#if [[ $btprog_set == 1 ]]; then
+ # sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
+ # sudo systemctl enable bluetooth.service --noconfirm
+ # wget -P /home/lljk/downloads/ https://git.io/brcm.tar.gz
+ # tar -xzf /home/lljk/downloads/brcm.tar.gz
+ # sudo mv /home/lljk/downloads/brcm/* /lib/firmware/brcm/
+#elif [[ $btprog_set == 0 ]]; then
+#  echo 'Установка программ пропущена.'
+#fi
 
 echo 'Установка автозапуска'
 rm /home/lljk/.xinitrc
