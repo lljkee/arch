@@ -115,6 +115,7 @@ fi
 
 echo 'Создаем папку downloads'
   mkdir /home/lljk/downloads
+  chmod 777 /home/lljk/downloads
   cd /home/lljk/downloads
 
 echo 'Создаем нужные директории'
@@ -129,9 +130,35 @@ echo 'Ставим обои темы и иконки'
   sudo mv -f /home/lljk/downloads/dimwalp.jpg /usr/share/backgrounds/xfce/dimwalp.jpg
   sudo mv -f /home/lljk/downloads/dimwalp1.jpg /usr/share/backgrounds/xfce/dimwalp1.jpg
   
-    echo 'Ставим лого ArchLinux в меню'
-  wget - P /home/lljk git.io/arch_logo.png
+  echo 'Ставим лого ArchLinux в меню'
+  wget -P /home/lljk/ git.io/arch_logo.png
   sudo mv -f /home/lljk/arch_logo.png /usr/share/pixmaps/arch_logo.png
+  
+  echo 'Ставим настройки'
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
+  rm -rf /home/lljk/.config/xfce4/panel/
+  rm -rf /home/lljk/.config/xfce4/*
+  tar -xzf /home/lljk/downloads/dimxfce4.tar.gz -C /home/lljk/.config/  
+  
+  echo 'Ставим иконки'
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/iconsxfce4.tar.gz
+  tar -xzf /home/lljk/downloads/iconsxfce4.tar.gz -C /home/lljk/
+  
+  echo 'Ставим темы'
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/themesxfce4.tar.gz
+  tar -xzf /home/lljk/downloads/themesxfce4.tar.gz -C /home/lljk/
+  
+  echo 'Ставим conky'
+  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/conky.tar.gz
+  tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config/
+  
+  echo 'Добавляем иконки'
+  gtk-update-icon-cache /home/lljk/.icons/nouveGnomeGray/
+  gtk-update-icon-cache /home/lljk/.icons/vamox-argentum/
+  
+  echo 'Настраиваем вид bash'
+  rm /home/lljk/.bashrc
+  wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
   
 #echo 'Установить Bluetooth?'
 #read -p "1 - Да, 0 - Нет: " btprog_set
