@@ -83,11 +83,11 @@ pacman -S xfce4 xfce4-goodies git --noconfirm
 echo 'Ставим шрифты'
 pacman -S ttf-liberation ttf-dejavu opendesktop-fonts ttf-bitstream-vera ttf-arphic-ukai ttf-arphic-uming ttf-hanazono --noconfirm 
 
-echo 'Ставим сеть'
-pacman -S networkmanager network-manager-applet modemmanager ppp --noconfirm
-
-echo 'Подключаем автозагрузку менеджера входа и интернет'
-systemctl enable NetworkManager
+#echo 'Ставим сеть'
+#pacman -S networkmanager network-manager-applet modemmanager ppp --noconfirm
+#
+#echo 'Подключаем автозагрузку менеджера входа и интернет'
+#systemctl enable NetworkManager
 
 echo 'Установить звук?'
 read -p "1 - Да, 0 - Нет: " soundprog_set
