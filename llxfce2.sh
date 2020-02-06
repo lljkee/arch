@@ -32,6 +32,7 @@ echo 'Обновляем grub.cfg'
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo 'Ставим программу для Wi-fi'
+pacman -Syy
 pacman -S dialog wpa_supplicant broadcom-wl iw --noconfirm 
 
 echo 'Добавляем пользователя'
