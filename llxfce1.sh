@@ -44,6 +44,12 @@ echo '2.4 создание разделов'
   echo +5G;
 
   echo n;
+  echo;
+  echo;
+  echo;
+  echo +100G;
+
+  echo n;
   echo p;
   echo;
   echo;
@@ -61,6 +67,7 @@ mkfs.ext2  /dev/sda1 -L boot
 mkfs.ext4  /dev/sda2 -L root
 mkswap /dev/sda3 -L swap
 mkfs.ext4  /dev/sda4 -L home
+mkfs.ext4  /dev/sda5 -L data
 
 echo '2.4.3 Монтирование дисков'
 mount /dev/sda2 /mnt
