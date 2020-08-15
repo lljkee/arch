@@ -161,17 +161,16 @@ echo 'Ставим обои темы и иконки'
   rm /home/lljk/.bashrc
   wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
   
-#echo 'Установить Bluetooth?'
-#read -p "1 - Да, 0 - Нет: " btprog_set
-#if [[ $btprog_set == 1 ]]; then
- # sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
- # sudo systemctl enable bluetooth.service --noconfirm
- # wget -P /home/lljk/downloads/ https://git.io/brcm.tar.gz
- # tar -xzf /home/lljk/downloads/brcm.tar.gz
- # sudo mv /home/lljk/downloads/brcm/* /lib/firmware/brcm/
-#elif [[ $btprog_set == 0 ]]; then
-#  echo 'Установка программ пропущена.'
-#fi
+  echo 'Установить Bluetooth?'#read -p "1 - Да, 0 - Нет: " btprog_set
+if [[ $btprog_set == 1 ]]; then
+  sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
+  sudo systemctl enable bluetooth.service --noconfirm
+  wget -P /home/lljk/downloads/ https://git.io/brcm.tar.gz
+  tar -xzf /home/lljk/downloads/brcm.tar.gz
+  sudo mv /home/lljk/downloads/brcm/* /lib/firmware/brcm/
+elif [[ $btprog_set == 0 ]]; then
+  echo 'Установка программ пропущена.'
+fi
 
 echo 'Установка автозапуска'
 rm /home/lljk/.xinitrc
