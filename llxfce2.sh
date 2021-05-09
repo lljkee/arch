@@ -115,9 +115,9 @@ elif [[ $dopprog_set == 0 ]]; then
 fi
 
 echo 'Создаем папку downloads'
-  mkdir /home/lljk/downloads
-  chmod 777 /home/lljk/downloads
-  cd /home/lljk/downloads
+  mkdir /home/Alex/downloads
+  chmod 777 /home/Alex/downloads
+  cd /home/Alex/downloads
 
 echo 'Создаем нужные директории'
   sudo pacman -S xdg-user-dirs --noconfirm
@@ -125,59 +125,59 @@ echo 'Создаем нужные директории'
 
 echo 'Ставим обои темы и иконки'
   echo 'Ставим обои'
-  wget -P /home/lljk/downloads/ https://git.io/dimwalp.jpg
-  wget -P /home/lljk/downloads/ https://git.io/dimwalp1.jpg
+  wget -P /home/Alex/downloads/ https://git.io/dimwalp.jpg
+  wget -P /home/Alex/downloads/ https://git.io/dimwalp1.jpg
   sudo rm -rf /usr/share/backgrounds/xfce/* #Удаляем стандартрые обои
-  sudo mv -f /home/lljk/downloads/dimwalp.jpg /usr/share/backgrounds/xfce/dimwalp.jpg
-  sudo mv -f /home/lljk/downloads/dimwalp1.jpg /usr/share/backgrounds/xfce/dimwalp1.jpg
+  sudo mv -f /home/Alex/downloads/dimwalp.jpg /usr/share/backgrounds/xfce/dimwalp.jpg
+  sudo mv -f /home/Alex/downloads/dimwalp1.jpg /usr/share/backgrounds/xfce/dimwalp1.jpg
   
   echo 'Ставим лого ArchLinux в меню'
-  wget -P /home/lljk/ git.io/arch_logo.png
-  sudo mv -f /home/lljk/arch_logo.png /usr/share/pixmaps/arch_logo.png
+  wget -P /home/Alex/ git.io/arch_logo.png
+  sudo mv -f /home/Alex/arch_logo.png /usr/share/pixmaps/arch_logo.png
   
   echo 'Ставим настройки'
-  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
-  rm -rf /home/lljk/.config/xfce4/panel/
-  rm -rf /home/lljk/.config/xfce4/*
-  tar -xzf /home/lljk/downloads/dimxfce4.tar.gz -C /home/lljk/.config/  
+  wget -P /home/Alex/downloads/ https://github.com/lljkee/arch/raw/master/attach/dimxfce4.tar.gz
+  rm -rf /home/Alex/.config/xfce4/panel/
+  rm -rf /home/Alex/.config/xfce4/*
+  tar -xzf /home/Alex/downloads/dimxfce4.tar.gz -C /home/Alex/.config/  
   
   echo 'Ставим иконки'
-  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/iconsxfce4.tar.gz
-  tar -xzf /home/lljk/downloads/iconsxfce4.tar.gz -C /home/lljk/
+  wget -P /home/Alex/downloads/ https://github.com/lljkee/arch/raw/master/attach/iconsxfce4.tar.gz
+  tar -xzf /home/Alex/downloads/iconsxfce4.tar.gz -C /home/Alex/
   
   echo 'Ставим темы'
-  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/themesxfce4.tar.gz
-  tar -xzf /home/lljk/downloads/themesxfce4.tar.gz -C /home/lljk/
+  wget -P /home/Alex/downloads/ https://github.com/lljkee/arch/raw/master/attach/themesxfce4.tar.gz
+  tar -xzf /home/Alex/downloads/themesxfce4.tar.gz -C /home/Alex/
   
-  echo 'Ставим conky'
-  wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/conky.tar.gz
-  tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config/
+  #echo 'Ставим conky'
+  #wget -P /home/lljk/downloads/ https://github.com/lljkee/arch/raw/master/attach/conky.tar.gz
+  #tar -xzf /home/lljk/downloads/conky.tar.gz -C /home/lljk/.config/
   
   echo 'Добавляем иконки'
-  gtk-update-icon-cache /home/lljk/.icons/nouveGnomeGray/
-  gtk-update-icon-cache /home/lljk/.icons/vamox-argentum/
+  gtk-update-icon-cache /home/Alex/.icons/nouveGnomeGray/
+  gtk-update-icon-cache /home/Alex/.icons/vamox-argentum/
   
   echo 'Настраиваем вид bash'
-  rm /home/lljk/.bashrc
-  wget -P /home/lljk/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
+  rm /home/Alex/.bashrc
+  wget -P /home/Alex/ https://raw.githubusercontent.com/lljkee/arch/master/attach/.bashrc
   
   echo 'Установить Bluetooth?'#read -p "1 - Да, 0 - Нет: " btprog_set
 if [[ $btprog_set == 1 ]]; then
   sudo pacman -S bluez blueman bluez-utils bluez-hid2hci pulseaudio-bluetooth --noconfirm
   sudo systemctl enable bluetooth.service --noconfirm
-  wget -P /home/lljk/downloads/ https://git.io/brcm.tar.gz
-  tar -xzf /home/lljk/downloads/brcm.tar.gz
-  sudo mv /home/lljk/downloads/brcm/* /lib/firmware/brcm/
+  wget -P /home/Alex/downloads/ https://git.io/brcm.tar.gz
+  tar -xzf /home/Alex/downloads/brcm.tar.gz
+  sudo mv /home/Alex/downloads/brcm/* /lib/firmware/brcm/
 elif [[ $btprog_set == 0 ]]; then
   echo 'Установка программ пропущена.'
 fi
 
 echo 'Установка автозапуска'
-rm /home/lljk/.xinitrc
-wget -P /home/lljk/ https://git.io/.xinitrc
+rm /home/Alex/.xinitrc
+wget -P /home/Alex/ https://git.io/.xinitrc
 
-rm /home/lljk/.bash_profile
-wget -P /home/lljk/ https://git.io/.bash_profile
+rm /home/Alex/.bash_profile
+wget -P /home/Alex/ https://git.io/.bash_profile
 
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
 sudo wget -P /etc/systemd/system/getty@tty1.service.d/ https://git.io/override.conf
